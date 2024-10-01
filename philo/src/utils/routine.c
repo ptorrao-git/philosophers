@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:12:47 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/01 12:35:02 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/01 14:42:27 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*philo_life(void *v_philo)
 {
-	t_philo *philo;
+	t_philo	*philo;
 
 	philo = (t_philo *)v_philo;
 	if (philo->stats->nbr_philo == 1)
@@ -24,7 +24,7 @@ void	*philo_life(void *v_philo)
 	}
 	while (true)
 		if (!cycle(philo))
-			break;
+			break ;
 	return (NULL);
 }
 
@@ -36,7 +36,7 @@ void	do_something(t_philo *philo, int action)
 		pthread_mutex_unlock(&philo->stats->mutex);
 		return ;
 	}
-	pthread_mutex_unlock(&philo->stats->mutex);;
+	pthread_mutex_unlock(&philo->stats->mutex);
 	if (action == FORK)
 		pick_forks(philo);
 	else if (action == EAT)

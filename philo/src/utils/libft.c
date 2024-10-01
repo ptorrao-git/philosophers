@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:28:43 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/09/30 16:50:44 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/01 14:39:41 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ size_t	ft_strlen(const char *str)
 void	print_status(t_philo *philo, char *status, int action)
 {
 	suseconds_t	time;
-	
+
 	if (philo->stats->end == true && action != DEAD)
 		return ;
 	pthread_mutex_lock(&philo->stats->mutex);

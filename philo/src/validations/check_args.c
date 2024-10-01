@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 16:21:32 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/01 12:24:55 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/01 14:43:08 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ bool	check_is_digit(char **argv)
 	while (argv[++i])
 	{
 		while (argv[i][++j])
+		{
 			if (!ft_isdigit(argv[i][j]))
 			{
 				printf(DIGIT_ONLY);
 				return (false);
 			}
+		}
 		j = -1;
 	}
 	return (true);
@@ -52,7 +54,7 @@ bool	build_struct(char **argv, t_stats *stats)
 	return (true);
 }
 
-bool	check_args(int	argc, char **argv)
+bool	check_args(int argc, char **argv)
 {
 	if (!(argc == 5 || argc == 6) || !(check_is_digit(argv)))
 		return (false);

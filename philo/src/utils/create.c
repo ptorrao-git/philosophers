@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:30:23 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/01 12:45:01 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/01 14:41:27 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ bool	start_thread(t_stats *stats, t_philo *philo, pthread_mutex_t *fork)
 	while (++i < stats->nbr_philo)
 	{
 		philo[i].start_time = get_time();
-		if (pthread_create(&philo[i].t_id, NULL, &philo_life, (void *)&philo[i]))
+		if (pthread_create(&philo[i].t_id, NULL,
+				&philo_life, (void *)&philo[i]))
 			return (shinu(fork, NULL, philo, MALLOC_ERROR));
 	}
 	i = -1;
@@ -83,16 +84,18 @@ bool	is_dead(t_philo *philo)
 	return (false);
 }
 
-bool check_if_eaten(t_philo *philo)
+bool	check_if_eaten(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->stats->mutex);
 	if (philo->stats->eat_times != -1)
+	{
 		if (philo->num_eat >= philo->stats->eat_times && philo->bi == 0)
 		{
 			philo->bi = 1;
 			pthread_mutex_unlock(&philo->stats->mutex);
 			return (true);
 		}
+	}
 	pthread_mutex_unlock(&philo->stats->mutex);
 	return (false);
 }
