@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 12:08:58 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/09/25 14:07:00 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/09/25 18:19:31 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ void	free_all(pthread_mutex_t *forks, t_stats *stats, t_philo *philo)
 	}
 }
 
-void	shinu(pthread_mutex_t *forks, t_stats *stats, t_philo *philo, char *error)
+bool	shinu(pthread_mutex_t *forks, t_stats *stats, t_philo *philo, char *error)
 {
 	free_all(forks, stats, philo);
 	write(STDERR_FILENO, "ERROR: ", 7);
 	write(STDERR_FILENO, error, ft_strlen(error));
 	write(STDERR_FILENO, "\n", 1);
-	exit(EXIT_FAILURE);
+	return(false);
 }
 
