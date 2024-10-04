@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 11:02:21 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/01 14:44:34 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/04 16:55:23 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,9 @@
 # include <string.h>
 # include <sys/time.h>
 # include <stdbool.h>
+# include <limits.h>
 
-# define DIGIT_ONLY "All arguments must be digits only."
+# define DIGIT_ONLY "All arguments must be digits only.\n"
 
 # define WRONG_ARGS "This is how the program must be \
 used: ./philos number_of_philosophers time_to_die \
@@ -58,13 +59,13 @@ time_to_eat time_to_sleep \
 
 typedef struct s_stats
 {
-	int					nbr_philo;
-	int					time_to_die;
-	int					time_to_eat;
-	int					time_to_sleep;
-	int					eat_times;
-	pthread_mutex_t		mutex;
-	bool				end;
+	long					nbr_philo;
+	long					time_to_die;
+	long					time_to_eat;
+	long					time_to_sleep;
+	long					eat_times;
+	pthread_mutex_t			mutex;
+	bool					end;
 }				t_stats;
 
 typedef struct s_philo
@@ -91,8 +92,9 @@ bool			shinu(pthread_mutex_t *forks, t_stats *stats,
 
 bool			check_args(int argc, char **argv);
 bool			check_is_digit(char **argv);
+bool			check_max_int(char **argv);
 
-int				ft_atoi(const char *str);
+long			ft_atol(const char *str);
 int				ft_isdigit(int c);
 size_t			ft_strlen(const char *str);
 
@@ -109,5 +111,6 @@ bool			cycle(t_philo *philo);
 bool			check_if_eaten(t_philo *philo);
 void			pick_forks(t_philo *philo);
 void			lay_forks(t_philo *philo);
+void			wait_time(t_philo *philo, u_int64_t time);
 
 #endif

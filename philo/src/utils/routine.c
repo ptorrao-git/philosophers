@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:12:47 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/01 14:42:27 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:23:16 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,12 @@ void	lay_forks(t_philo *philo)
 	if (philo->philo_id % 2 == 0)
 	{
 		pthread_mutex_unlock(philo->l_fork);
-		print_status(philo, DEFORKING, DEFORK);
 		pthread_mutex_unlock(philo->r_fork);
-		print_status(philo, DEFORKING, DEFORK);
 	}
 	else
 	{
 		pthread_mutex_unlock(philo->r_fork);
-		print_status(philo, DEFORKING, DEFORK);
 		pthread_mutex_unlock(philo->l_fork);
-		print_status(philo, DEFORKING, DEFORK);
 	}
 }
 
@@ -111,7 +107,7 @@ bool	cycle(t_philo *philo)
 	do_something(philo, FORK);
 	do_something(philo, EAT);
 	print_status(philo, EATING, EAT);
-	usleep(philo->stats->time_to_eat * 999);
+	wait_time(philo, philo->stats->time_to_eat);
 	pthread_mutex_lock(&philo->stats->mutex);
 	if (philo->stats->end == true)
 	{
@@ -122,7 +118,7 @@ bool	cycle(t_philo *philo)
 	pthread_mutex_unlock(&philo->stats->mutex);
 	do_something(philo, DEFORK);
 	print_status(philo, SLEEPING, SLEEP);
-	usleep(philo->stats->time_to_sleep * 999);
+	wait_time(philo, philo->stats->time_to_sleep);
 	print_status(philo, THINKING, THINK);
 	return (true);
 }

@@ -6,17 +6,17 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:28:43 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/01 14:39:41 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/04 17:22:44 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	ft_atoi(const char *str)
+long	ft_atol(const char *str)
 {
-	int	i;
-	int	neg;
-	int	t;
+	int		i;
+	long	neg;
+	long	t;
 
 	i = 0;
 	neg = 1;
@@ -76,4 +76,13 @@ void	print_status(t_philo *philo, char *status, int action)
 		return ;
 	}
 	pthread_mutex_unlock(&philo->stats->mutex);
+}
+
+void	wait_time(t_philo *philo, u_int64_t time)
+{
+	if ((get_time() + time) >= (u_int64_t)philo->stats->time_to_die
+		+ get_time())
+		usleep(((u_int64_t)philo->stats->time_to_die) * 999);
+	else
+		usleep(time * 999);
 }
