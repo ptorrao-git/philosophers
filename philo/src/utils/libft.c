@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 11:28:43 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/04 17:22:44 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/15 15:46:19 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,12 @@ void	print_status(t_philo *philo, char *status, int action)
 {
 	suseconds_t	time;
 
-	if (philo->stats->end == true && action != DEAD)
-		return ;
 	pthread_mutex_lock(&philo->stats->mutex);
+	if (philo->stats->end == true && action != DEAD)
+	{
+		pthread_mutex_unlock(&philo->stats->mutex);
+		return ;
+	}
 	if (philo->stats->end == false)
 	{
 		time = get_time() - philo->start_time;

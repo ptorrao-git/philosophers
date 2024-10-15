@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 16:21:32 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/04 17:23:52 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/15 11:28:13 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ bool	build_struct(char **argv, t_stats *stats)
 	stats->eat_times = -1;
 	if (argv[5])
 		stats->eat_times = ft_atol(argv[5]);
-	if (stats->nbr_philo == 0 || stats->eat_times == 0)
+	if (stats->nbr_philo == 0 || stats->eat_times == 0
+		|| stats->time_to_die == 0)
 		return (false);
 	if (pthread_mutex_init(&(stats->mutex), NULL) != 0)
 	{
