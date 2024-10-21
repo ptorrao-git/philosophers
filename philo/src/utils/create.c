@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 14:30:23 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/21 16:59:45 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/21 17:02:12 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ suseconds_t	get_time(void)
 
 bool	start_thread(t_stats *stats, t_philo *philo, pthread_mutex_t *fork)
 {
-	int	i;
+	int			i;
 	suseconds_t	time;
 
 	i = -1;
