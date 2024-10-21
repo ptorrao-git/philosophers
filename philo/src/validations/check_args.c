@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 16:21:32 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/15 11:28:13 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:57:59 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,13 @@ bool	check_max_int(char **argv)
 	if (argv[5])
 		if (ft_atol(argv[5]) > INT_MAX)
 			return (false);
+	return (true);
+}
+
+bool	end_philo(t_stats *stats)
+{
+	pthread_mutex_lock(&stats->mutex);
+	stats->end = true;
+	pthread_mutex_unlock(&stats->mutex);
 	return (true);
 }

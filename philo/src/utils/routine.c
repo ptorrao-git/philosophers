@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/25 18:12:47 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/15 15:47:07 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:23:50 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,13 @@ void	lay_forks(t_philo *philo)
 
 bool	cycle(t_philo *philo)
 {
+	pthread_mutex_lock(&philo->stats->mutex);
+	if (philo->stats->end == true)
+	{
+		pthread_mutex_unlock(&philo->stats->mutex);
+		return (false);
+	}
+	pthread_mutex_unlock(&philo->stats->mutex);
 	do_something(philo, FORK);
 	do_something(philo, EAT);
 	print_status(philo, EATING, EAT);

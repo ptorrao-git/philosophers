@@ -6,7 +6,7 @@
 #    By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/16 11:02:10 by ptorrao-          #+#    #+#              #
-#    Updated: 2024/09/30 17:54:57 by ptorrao-         ###   ########.fr        #
+#    Updated: 2024/10/15 14:31:50 by ptorrao-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@
 
 CC				= cc -g
 RM				= rm -rf
-CFLAGS			= -Wall -Wextra -Werror #-fsanitize=thread #
+CFLAGS			= -Wall -Wextra -Werror -fsanitize=thread
 NAME			= philo
 
 INC				= -I./include

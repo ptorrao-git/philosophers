@@ -6,7 +6,7 @@
 /*   By: ptorrao- <ptorrao-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 11:02:21 by ptorrao-          #+#    #+#             */
-/*   Updated: 2024/10/04 16:55:23 by ptorrao-         ###   ########.fr       */
+/*   Updated: 2024/10/21 16:58:12 by ptorrao-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,6 @@ bool			check_if_eaten(t_philo *philo);
 void			pick_forks(t_philo *philo);
 void			lay_forks(t_philo *philo);
 void			wait_time(t_philo *philo, u_int64_t time);
+bool			end_philo(t_stats *stats);
 
 #endif
